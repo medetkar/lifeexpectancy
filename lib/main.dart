@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,6 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.light().copyWith(
+        //brightness: Brightness.dark,
+        primaryColor: Colors.blueAccent[900],
+        backgroundColor: Colors.blueAccent[100],
+      ),
       home: InputPage(),
     );
   }
@@ -32,9 +38,15 @@ class _InputPageState extends State<InputPage> {
       body: Center(
         child: Text('Form Alanı'),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        child: Icon(Icons.add),
+      floatingActionButton: Theme(
+        data: ThemeData(
+          //colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.pink),
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Theme.of(context).primaryColor),
+        ),
+        child: FloatingActionButton(
+          onPressed: (){},
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
