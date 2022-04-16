@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'myWidgets/genderColumn.dart';
+import 'myWidgets/myColumn.dart';
+
 
 class InputPage extends StatefulWidget {
-  const InputPage({Key? key}) : super(key: key);
-
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -58,35 +61,21 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   flex: 1,
                   child: MyContainer(
+                    child: GenderColumn(cinsiyet: 'Kadın',icon: FontAwesomeIcons.venus,),
                     renk: Colors.purple,
                   ),
                 ),
                 Expanded(
                   flex: 1,
                   child: MyContainer(
-                    renk: Colors.red,
+                    child: GenderColumn(cinsiyet: 'Erkek',icon: FontAwesomeIcons.mars,),
+                    renk: Colors.blue[900],
                   ),
                 ),
               ],
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MyContainer extends StatelessWidget {
-  final Color renk;
-  MyContainer({required this.renk});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: renk,
       ),
     );
   }
