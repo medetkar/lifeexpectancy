@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../myStyles/text_style.dart';
+
 class GenderColumn extends StatelessWidget {
 
   final IconData icon;
@@ -16,13 +18,11 @@ class GenderColumn extends StatelessWidget {
         SizedBox(height: 10,),
         Text(
           cinsiyet,
-          style: TextStyle(
-            color: Colors.black54,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+          style: myTextStyle(),
         ),
       ],
     );
   }
+
+
 }
