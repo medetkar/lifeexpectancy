@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:life_expectancy/myStyles/text_style.dart';
@@ -6,6 +5,8 @@ import 'myWidgets/genderColumn.dart';
 import 'myWidgets/myColumn.dart';
 
 class InputPage extends StatefulWidget {
+  const InputPage({Key key}) : super(key: key);
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -15,6 +16,7 @@ class _InputPageState extends State<InputPage> {
   double icilenSigara = 0;
   double sporGunSayisi = 0;
   int boy = 180;
+  int kilo = 90;
   //Color butonRenk;
   @override
   Widget build(BuildContext context) {
@@ -33,85 +35,8 @@ class _InputPageState extends State<InputPage> {
             flex: 1,
             child: Row(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: MyContainer(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Center(
-                            child: RotatedBox(
-                              quarterTurns: -1,
-                              child: Text(
-                                'BOY',
-                                style: myTextStyle,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Center(
-                            child: RotatedBox(
-                              quarterTurns: -1,
-                              child: Text(
-                                boy.toString(),
-                                style: myNumberStyle,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Center(
-                                  child: TextButton(
-                                    child: Icon(FontAwesomeIcons.plus),
-                                    onPressed: () {
-                                      setState(
-                                        () {
-                                          boy++;
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 15,
-                                ),
-                                Center(
-                                  child: TextButton(
-                                    child: Icon(FontAwesomeIcons.minus),
-                                    onPressed: () {
-                                      setState(
-                                            () {
-                                          boy--;
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    //renk: Colors.yellow,
-                  ),
-                ),
-                Expanded(
-                  //flex: 1,
-                  child: MyContainer(
-                    renk: Colors.red,
-                  ),
-                ),
+                buildBoyKiloKart('BOY'),
+                buildBoyKiloKart('KİLO'),
               ],
             ),
           ),
@@ -220,6 +145,93 @@ class _InputPageState extends State<InputPage> {
             ),
           ), //cinsiyet seçimi
         ],
+      ),
+    );
+  }
+
+  Expanded buildBoyKiloKart(String label) {
+    return Expanded(
+      flex: 1,
+      child: MyContainer(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: RotatedBox(
+                  quarterTurns: -1,
+                  child: Text(
+                    label,
+                    style: myTextStyle,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: RotatedBox(
+                  quarterTurns: -1,
+                  child: Text(
+                    label == 'BOY' ? boy.toString() : kilo.toString(),
+                    //value.toString(),
+                    style: myNumberStyle,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: TextButton(
+                        child: const Icon(FontAwesomeIcons.plus),
+                        onPressed: () {
+                          setState(
+                            () {
+                              label=='BOY'?boy++:kilo++;
+                              // if (label == 'BOY') {
+                              //   boy++;
+                              // } else if (label == 'KİLO') {
+                              //   kilo++;
+                              // }
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Center(
+                      child: TextButton(
+                        child: const Icon(FontAwesomeIcons.minus),
+                        onPressed: () {
+                          setState(
+                            () {
+                              label=='BOY'?boy--:kilo--;
+                              // if (label == 'BOY') {
+                              //   boy--;
+                              // } else if (label == 'KİLO') {
+                              //   kilo--;
+                              // }
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        //renk: Colors.yellow,
       ),
     );
   }
