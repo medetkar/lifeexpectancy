@@ -14,6 +14,7 @@ class _InputPageState extends State<InputPage> {
   String seciliCinsiyet;
   double icilenSigara = 0;
   double sporGunSayisi = 0;
+  int boy = 180;
   //Color butonRenk;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
+        children: <Widget>[
           Expanded(
             flex: 1,
             child: Row(
@@ -35,11 +36,78 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   flex: 1,
                   child: MyContainer(
-                    renk: Colors.yellow,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      //crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 1,
+                          child: Center(
+                            child: RotatedBox(
+                              quarterTurns: -1,
+                              child: Text(
+                                'BOY',
+                                style: myTextStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Center(
+                            child: RotatedBox(
+                              quarterTurns: -1,
+                              child: Text(
+                                boy.toString(),
+                                style: myNumberStyle,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Center(
+                                  child: TextButton(
+                                    child: Icon(FontAwesomeIcons.plus),
+                                    onPressed: () {
+                                      setState(
+                                        () {
+                                          boy++;
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Center(
+                                  child: TextButton(
+                                    child: Icon(FontAwesomeIcons.minus),
+                                    onPressed: () {
+                                      setState(
+                                            () {
+                                          boy--;
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    //renk: Colors.yellow,
                   ),
                 ),
                 Expanded(
-                  flex: 1,
+                  //flex: 1,
                   child: MyContainer(
                     renk: Colors.red,
                   ),
@@ -55,11 +123,11 @@ class _InputPageState extends State<InputPage> {
                 children: [
                   Text(
                     "Haftada kaç gün spor yapıyorsunuz?",
-                    style: myTextStyle(),
+                    style: myTextStyle,
                   ),
                   Text(
                     sporGunSayisi.round().toString(),
-                    style: myTextStyle(),
+                    style: myNumberStyle,
                   ),
                   Slider(
                     min: 0,
@@ -87,11 +155,11 @@ class _InputPageState extends State<InputPage> {
                 children: [
                   Text(
                     "Günde kaç sigara içiyorsun?",
-                    style: myTextStyle(),
+                    style: myTextStyle,
                   ),
                   Text(
                     icilenSigara.round().toString(),
-                    style: myTextStyle(),
+                    style: myNumberStyle,
                   ),
                   Slider(
                     min: 0,

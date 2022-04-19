@@ -18,7 +18,7 @@ class GenderColumn extends StatelessWidget {
         SizedBox(height: 10,),
         Text(
           cinsiyet,
-          style: myTextStyle(),
+          style: myTextStyle,
         ),
       ],
     );
