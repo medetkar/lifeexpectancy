@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:life_expectancy/myStyles/text_style.dart';
+import 'package:life_expectancy/result_page.dart';
+import 'package:life_expectancy/user_data.dart';
 import 'myWidgets/genderColumn.dart';
 import 'myWidgets/myColumn.dart';
+//import 'user_data.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({Key key}) : super(key: key);
@@ -143,6 +146,34 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            height: 50,
+            child: TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                      UserData(
+                        kilo: kilo,
+                        seciliCinsiyet: seciliCinsiyet,
+                        sporGunSayisi: sporGunSayisi,
+                        boy: boy,
+                        icilenSigara: icilenSigara,
+                      ),
+                    ),
+                  ),
+                );
+              },
+              child: Text(
+                'Hesapla',
+                style: myTextStyle,
+              ),
+            ),
           ), //cinsiyet seçimi
         ],
       ),
@@ -194,7 +225,7 @@ class _InputPageState extends State<InputPage> {
                         onPressed: () {
                           setState(
                             () {
-                              label=='BOY'?boy++:kilo++;
+                              label == 'BOY' ? boy++ : kilo++;
                               // if (label == 'BOY') {
                               //   boy++;
                               // } else if (label == 'KİLO') {
@@ -214,7 +245,7 @@ class _InputPageState extends State<InputPage> {
                         onPressed: () {
                           setState(
                             () {
-                              label=='BOY'?boy--:kilo--;
+                              label == 'BOY' ? boy-- : kilo--;
                               // if (label == 'BOY') {
                               //   boy--;
                               // } else if (label == 'KİLO') {
